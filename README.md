@@ -121,4 +121,3 @@ Project Link:
 
 [contributors-url]: https://github.com/TomassSimko/Private-Movie-Collection/graphs/contributors
 
-# easv-event-bar
