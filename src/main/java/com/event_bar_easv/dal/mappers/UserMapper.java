@@ -1,5 +1,7 @@
 package com.event_bar_easv.dal.mappers;
 
+import com.event_bar_easv.be.AppUser;
+
 import java.util.List;
 
 public interface UserMapper {
@@ -8,6 +10,6 @@ public interface UserMapper {
      *
      * @return list of Movies
      */
-    List<String> getAllUsers();
+    List<AppUser> getAllUsers();
 
 }

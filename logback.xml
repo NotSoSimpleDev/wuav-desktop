@@ -19,7 +19,7 @@
         <level value="trace"/>
     </logger>
 
-    <logger name="com.event_bar_easv.dal.dao.MovieDAO">
+    <logger name="com.event_bar_easv.dal.reporitory.MovieDAO">
         <level value="trace"/>
     </logger>
 

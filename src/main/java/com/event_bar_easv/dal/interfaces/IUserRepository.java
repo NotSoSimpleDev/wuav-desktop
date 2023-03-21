@@ -1,5 +1,7 @@
 package com.event_bar_easv.dal.interfaces;
 
+import com.event_bar_easv.be.AppUser;
+
 import java.util.List;
 
 public interface IUserRepository {
@@ -9,5 +11,5 @@ public interface IUserRepository {
      *
      * @return a list of all the Categories from database
      */
-    List<String> getAllUsers();
+    List<AppUser> getAllUsers();
 }

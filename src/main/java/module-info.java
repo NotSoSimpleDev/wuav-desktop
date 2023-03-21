@@ -16,10 +16,11 @@ module com.event_bar_easv {
     exports com.event_bar_easv.bll.services;
     exports com.event_bar_easv.bll.utilities;
     exports com.event_bar_easv to javafx.graphics;
-    exports com.event_bar_easv.dal.dao;
+    exports com.event_bar_easv.dal.reporitory;
     exports com.event_bar_easv.dal.interfaces;
     exports com.event_bar_easv.gui.models;
     exports com.event_bar_easv.config;
+    exports com.event_bar_easv.be;
     exports com.event_bar_easv.di;
     exports com.event_bar_easv.gui.controllers.event;
 
@@ -31,5 +32,6 @@ module com.event_bar_easv {
     opens com.event_bar_easv.di to com.google.guice, javafx.fxml;
     opens com.event_bar_easv.dal.myBatis to org.mybatis, javafx.fxml, org.slf4j;
     opens com.event_bar_easv.dal.mappers to org.mybatis;
+    opens com.event_bar_easv.be to org.mybatis, javafx.fxml, org.slf4j;
     exports com.event_bar_easv.bll.services.interfaces;
 }
