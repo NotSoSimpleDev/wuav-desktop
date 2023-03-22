@@ -11,28 +11,23 @@ public enum ViewType {
             return "views/base.fxml";
         }
     },
-    MOVIES {
+    EVENTS {
         @Override
         public String getFXMLView() {
-            return "views/movies-view.fxml";
+            return "views/eventView.fxml";
         }
     },
-    CREATE_EDIT {
+    USERS {
         @Override
         public String getFXMLView() {
-            return "views/movie-create-edit-view.fxml";
+            return "views/usersView.fxml";
         }
-    }, CATEGORY_ADD_EDIT {
+    },
+    SPECIAL_TICKETS{
         @Override
         public String getFXMLView() {
-            return "views/category-add-edit-view.fxml";
-        }
-    }, MEDIA_PLAYER_SELECTION {
-        @Override
-        public String getFXMLView() {
-            return "views/media-player-select-view.fxml";
+            return "views/specialTicketsView.fxml";
         }
     };
-
     public abstract String getFXMLView();
 }

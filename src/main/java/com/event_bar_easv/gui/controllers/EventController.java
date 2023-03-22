@@ -10,11 +10,11 @@ import java.util.ResourceBundle;
 /**
  * Controller for Movies with the view
  */
-public class MovieController extends RootController implements Initializable {
+public class EventController extends RootController implements Initializable {
 
 
     @Inject
-    public MovieController() {
+    public EventController() {
     }
 
     @Override

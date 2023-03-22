@@ -70,7 +70,6 @@
     -fx-text-fill: white;
     -fx-background-color: -fx-nord0;
     -fx-min-height: 40;
-    -fx-graphic: url('../icons/moviesIcon.png');
     -fx-graphic-text-gap: 10; /* gap between icon and button text */
     -fx-content-display: left; /* position of the icon */
 }
@@ -90,7 +89,6 @@
     -fx-text-fill: white;
     -fx-background-color: -fx-nord0;
     -fx-min-height: 40;
-    -fx-graphic: url('../icons/mediaPlayerIcon.png');
     -fx-graphic-text-gap: 10; /* gap between icon and button text */
     -fx-content-display: left; /* position of the icon */
 }

@@ -23,6 +23,7 @@ module com.event_bar_easv {
     exports com.event_bar_easv.be;
     exports com.event_bar_easv.di;
     exports com.event_bar_easv.gui.controllers.event;
+    exports com.event_bar_easv.gui.controllers.controllerFactory;
 
     opens com.event_bar_easv.gui.controllers to javafx.fxml, com.google.guice, com.google.common;
     opens com.event_bar_easv to javafx.fxml, com.google.guice, org.slf4j;
