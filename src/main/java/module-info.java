@@ -10,6 +10,12 @@ module com.event_bar_easv {
     requires feign.core;
     requires feign.gson;
     requires com.google.common;
+    requires org.apache.pdfbox;
+    requires org.apache.fontbox;
+    requires java.desktop;
+    requires com.google.zxing;
+    requires com.google.zxing.javase;
+
 
     exports com.event_bar_easv.gui.controllers to  com.google.guice, javafx.fxml, com.google.common;
     exports com.event_bar_easv.bll.helpers;
@@ -26,7 +32,9 @@ module com.event_bar_easv {
     exports com.event_bar_easv.gui.controllers.controllerFactory;
     exports com.event_bar_easv.bll.services.interfaces to com.google.guice;
     exports com.event_bar_easv.gui.models.user to com.google.guice;
+    exports com.event_bar_easv.bll.utilities.pdf to org.apache.pdfbox, org.apache.fontbox,com.google.zxing,javase,java.desktop, com.google.guice;
 
+    opens com.event_bar_easv.bll.utilities.pdf to org.apache.pdfbox, org.apache.fontbox,com.google.zxing,javase,java.desktop, com.google.guice;
     opens com.event_bar_easv.gui.controllers to javafx.fxml, com.google.guice, com.google.common;
     opens com.event_bar_easv to javafx.fxml, com.google.guice, org.slf4j;
     opens com.event_bar_easv.gui.controllers.abstractController to com.google.guice, javafx.fxml, com.google.common;
