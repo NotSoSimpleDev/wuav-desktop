@@ -106,7 +106,7 @@
                         </VBox>
                         <VBox prefWidth="317.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <TextArea prefHeight="200.0" prefWidth="169.0" promptText="Write optional notes " />
+                              <TextArea prefHeight="200.0" prefWidth="282.0" promptText="Write optional notes " />
                            </children>
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -6,7 +6,6 @@ import com.event_bar_easv.bll.helpers.ViewType;
 import com.event_bar_easv.gui.controllers.abstractController.RootController;
 import com.event_bar_easv.gui.controllers.controllerFactory.IControllerFactory;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -20,8 +19,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 
 /**
@@ -46,9 +43,8 @@ public class BaseController extends RootController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        handleDashBoardPageSwitch();
     }
-
-
 
     //region PAGE SWITCHING EVENTS
     @FXML
@@ -65,8 +61,12 @@ public class BaseController extends RootController implements Initializable {
     private void handleSpecialTicketsPageSwitch()  {
         runInParallel(ViewType.SPECIAL_TICKETS);
     }
-    //endregion
 
+    @FXML
+    private void handleDashBoardPageSwitch()  {
+        runInParallel(ViewType.DASHBOARD);
+    }
+    //endregion
 
     private void runInParallel(ViewType type){
         final RootController[] parent = {null};

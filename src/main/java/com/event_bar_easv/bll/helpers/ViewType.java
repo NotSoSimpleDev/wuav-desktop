@@ -28,6 +28,12 @@ public enum ViewType {
         public String getFXMLView() {
             return "views/specialTicketsView.fxml";
         }
+    },
+    DASHBOARD {
+        @Override
+        public String getFXMLView() {
+            return "views/dashboardView.fxml";
+        }
     };
     public abstract String getFXMLView();
 }
