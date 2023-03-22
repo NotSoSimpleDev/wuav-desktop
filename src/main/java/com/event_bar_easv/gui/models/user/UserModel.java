@@ -1,7 +1,7 @@
 package com.event_bar_easv.gui.models.user;
 
 
-import com.event_bar_easv.be.AppUser;
+import com.event_bar_easv.be.user.AppUser;
 import com.event_bar_easv.bll.services.interfaces.IUserService;
 import com.google.inject.Inject;
 import javafx.collections.FXCollections;

@@ -122,14 +122,14 @@
             <children>
             <HBox layoutX="15.0" layoutY="9.0" prefHeight="268.0" prefWidth="615.0">
                <children>
-                      <TableView fx:id="moviesTable" prefHeight="265.0" prefWidth="615.0">
+                      <TableView fx:id="eventTable" prefHeight="265.0" prefWidth="615.0">
                           <columns>
-                              <TableColumn fx:id="colMovieTitle" editable="false" prefWidth="110.29818344116211" resizable="false" text="Title" />
-                              <TableColumn fx:id="colMovieRating" editable="false" prefWidth="106.12275695800781" resizable="false" text="Start/End Date" />
-                              <TableColumn fx:id="colMovieCategory" editable="false" prefWidth="117.08763122558594" resizable="false" text="Start/End Time" />
-                              <TableColumn fx:id="colLastViewed" editable="false" prefWidth="83.49127197265625" resizable="false" text="Location" />
-                              <TableColumn fx:id="colDeleteMovie" editable="false" maxWidth="114.50869750976562" prefWidth="103.42105102539062" resizable="false" text="Description" />
-                        <TableColumn fx:id="colDeleteMovie1" editable="false" maxWidth="92.50872802734375" prefWidth="90.57891845703125" resizable="false" text="Free ticket" />
+                              <TableColumn fx:id="colEventTitle" editable="false" prefWidth="110.29818344116211" resizable="false" text="Title" />
+                              <TableColumn fx:id="colEventDates" editable="false" prefWidth="106.12275695800781" resizable="false" text="Start/End Date" />
+                              <TableColumn fx:id="colEventTimes" editable="false" prefWidth="117.08763122558594" resizable="false" text="Start/End Time" />
+                              <TableColumn fx:id="colEventLocation" editable="false" prefWidth="83.49127197265625" resizable="false" text="Location" />
+                              <TableColumn fx:id="colEventDescription" editable="false" maxWidth="114.50869750976562" prefWidth="103.42105102539062" resizable="false" text="Description" />
+                             <TableColumn fx:id="colEventFreeTicket" editable="false" maxWidth="92.50872802734375" prefWidth="90.57891845703125" resizable="false" text="Free ticket" />
                           </columns>
                       </TableView>
                </children>

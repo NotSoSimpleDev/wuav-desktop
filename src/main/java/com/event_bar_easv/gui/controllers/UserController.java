@@ -1,7 +1,7 @@
 package com.event_bar_easv.gui.controllers;
 
-import com.event_bar_easv.be.AppRole;
-import com.event_bar_easv.be.AppUser;
+import com.event_bar_easv.be.user.AppRole;
+import com.event_bar_easv.be.user.AppUser;
 import com.event_bar_easv.gui.controllers.abstractController.RootController;
 import com.event_bar_easv.gui.models.user.IUserModel;
 import com.google.inject.Inject;
@@ -16,7 +16,6 @@ import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;

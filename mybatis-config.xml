@@ -19,8 +19,9 @@
 
     <!-- table aliases -->
     <typeAliases>
-        <typeAlias alias="AppUser" type="com.event_bar_easv.be.AppUser"/>
-        <typeAlias alias="AppRole" type="com.event_bar_easv.be.AppRole"/>
+        <typeAlias alias="AppUser" type="com.event_bar_easv.be.user.AppUser"/>
+        <typeAlias alias="AppRole" type="com.event_bar_easv.be.user.AppRole"/>
+        <typeAlias alias="Event" type="com.event_bar_easv.be.Event"/>
     </typeAliases>
 
     <!-- main environment -->
@@ -43,5 +44,6 @@
     <!-- mappers used to map required tables-->
     <mappers>
         <mapper resource="com/event_bar_easv/mybatis/mapper/AppUser/AppUser.xml"/>
+        <mapper resource="com/event_bar_easv/mybatis/mapper/Event/Event.xml"/>
     </mappers>
 </configuration>

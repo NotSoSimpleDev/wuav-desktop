@@ -1,6 +1,6 @@
 package com.event_bar_easv.bll.services;
 
-import com.event_bar_easv.be.AppUser;
+import com.event_bar_easv.be.user.AppUser;
 import com.event_bar_easv.bll.services.interfaces.IUserService;
 import com.event_bar_easv.dal.interfaces.IUserRepository;
 import com.google.inject.Inject;

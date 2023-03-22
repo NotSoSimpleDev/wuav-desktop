@@ -1,4 +1,6 @@
-package com.event_bar_easv.be;
+package com.event_bar_easv.be.user;
+
+import com.event_bar_easv.be.user.AppRole;
 
 import java.util.List;
 

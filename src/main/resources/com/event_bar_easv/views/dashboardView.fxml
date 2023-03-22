@@ -2,9 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -41,7 +41,7 @@
                               <Insets left="15.0" />
                            </GridPane.margin>
                         </Label>
-                        <Pane disable="true" prefHeight="200.0" prefWidth="225.0" style="-fx-background-color: green;" GridPane.columnIndex="1">
+                        <Pane disable="true" prefHeight="200.0" prefWidth="225.0" style="-fx-background-color: green;" visible="false" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
                            </GridPane.margin>
@@ -65,16 +65,32 @@
                                     <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="61.8731689453125" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <VBox>
+                                    <VBox alignment="CENTER">
                                        <children>
-                                          <Label text="Enter full name of the customer" />
-                                          <TextField promptText="Full Name" />
+                                          <Label prefHeight="17.0" prefWidth="157.0" text="Select customers to attend" />
+                                           <MenuButton fx:id="customerMenuButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Customers">
+                                               <items>
+                                                   <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                   <MenuItem mnemonicParsing="false" text="Action 2" />
+                                               </items>
+                                               <font>
+                                                   <Font name="Arial Rounded MT Bold" size="12.0" />
+                                               </font>
+                                           </MenuButton>
                                        </children>
                                     </VBox>
-                                    <VBox GridPane.rowIndex="1">
+                                    <VBox alignment="CENTER" GridPane.rowIndex="1">
                                        <children>
-                                          <Label text="Enter email of the customer " />
-                                          <TextField promptText="gmail@yahoo.com" />
+                                          <Label text="Select Event" />
+                                          <MenuButton fx:id="eventsMenuButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Events">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="12.0" />
+                                             </font>
+                                          </MenuButton>
                                        </children>
                                     </VBox>
                                     <Line endX="117.29289245605469" startX="-100.0" GridPane.rowIndex="2" />
@@ -82,32 +98,28 @@
                               </GridPane>
                               <GridPane prefHeight="104.0" prefWidth="219.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="54.1566162109375" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="49.8433837890625" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="33.5" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                    <VBox prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                                        <children>
-                                          <Label text="Event user will attend " />
-                                       </children>
-                                       <GridPane.margin>
-                                          <Insets />
-                                       </GridPane.margin>
-                                    </VBox>
-                                    <ChoiceBox prefWidth="218.0">
-                                       <GridPane.margin>
-                                          <Insets top="10.0" />
-                                       </GridPane.margin>
-                                    </ChoiceBox>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-                                       <children>
-                                          <Label text="Special Free Ticket" />
-                                          <ChoiceBox prefWidth="218.0" />
+                                           <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Special Ticket">
+                                               <items>
+                                                   <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                   <MenuItem mnemonicParsing="false" text="Action 2" />
+                                               </items>
+                                               <font>
+                                                   <Font name="Arial Rounded MT Bold" size="12.0" />
+                                               </font>
+                                           </MenuButton>
                                        </children>
                                     </VBox>
+                                    <Label text="Give free ticket" />
                                  </children>
                               </GridPane>
                            </children>

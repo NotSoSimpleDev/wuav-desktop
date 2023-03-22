@@ -41,5 +41,9 @@ module com.event_bar_easv {
     opens com.event_bar_easv.gui.models.user to javafx.fxml, com.google.guice, com.google.common, org.slf4j;
     opens com.event_bar_easv.gui.models to javafx.fxml, com.google.guice, com.google.common, org.slf4j;
     opens com.event_bar_easv.dal.reporitory to org.mybatis,javafx.fxml, com.google.guice, com.google.common, org.slf4j;
+    exports com.event_bar_easv.be.user to javafx.graphics, org.mybatis;
+    opens com.event_bar_easv.be.user to com.google.guice, javafx.fxml, org.mybatis, org.slf4j;
+    exports com.event_bar_easv.gui.models.event to com.google.guice, javafx.graphics, org.mybatis;
+    opens com.event_bar_easv.gui.models.event to com.google.common, com.google.guice, javafx.fxml, org.slf4j;
 
 }

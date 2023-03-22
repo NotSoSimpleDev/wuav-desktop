@@ -17,8 +17,8 @@
         </collection>
     </resultMap>
 
-<!--    this bullshit does not map column names with kebab case psw_has -->
-<!--    so it needs to be casted -->
+    <!--    this bullshit does not map column names with kebab case psw_has -->
+    <!--    so it needs to be casted -->
     <select id="getAllUsers"
             resultMap="userResult">
         SELECT u.id,
@@ -34,4 +34,3 @@
     </select>
 
 </mapper>
-
