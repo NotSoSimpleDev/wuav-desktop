@@ -84,14 +84,14 @@
                                     <Button mnemonicParsing="false" prefWidth="164.0" text="CREATE CUSTOMER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
-                              <TableView fx:id="moviesTable" prefHeight="228.0" prefWidth="638.0">
+                              <TableView fx:id="customerTable" prefHeight="228.0" prefWidth="638.0">
                                  <columns>
-                                    <TableColumn fx:id="colMovieTitle" editable="false" prefWidth="49.0" resizable="false" text="ID" />
-                                    <TableColumn fx:id="colMovieRating" editable="false" prefWidth="112.61314010620117" resizable="false" text="Full name" />
-                                    <TableColumn fx:id="colMovieCategory" editable="false" prefWidth="98.50422668457031" resizable="false" text="Email" />
-                                    <TableColumn fx:id="colLastViewed" editable="false" prefWidth="79.49578857421875" resizable="false" text="Role" />
-                                    <TableColumn fx:id="colDeleteMovie" editable="false" maxWidth="193.0" prefWidth="193.0" resizable="false" text="Events attending" />
-                                    <TableColumn fx:id="colDeleteMovie1" editable="false" maxWidth="177.0" prefWidth="90.0" resizable="false" text="isActive" />
+                                    <TableColumn fx:id="customerId" editable="false" prefWidth="49.0" resizable="false" text="ID" />
+                                    <TableColumn fx:id="customerName" editable="false" prefWidth="112.61314010620117" resizable="false" text="Full name" />
+                                    <TableColumn fx:id="customerEmail" editable="false" prefWidth="98.50422668457031" resizable="false" text="Email" />
+                                    <TableColumn fx:id="customerRole" editable="false" prefWidth="79.49578857421875" resizable="false" text="Role" />
+                                    <TableColumn fx:id="customerEvents" editable="false" maxWidth="193.0" prefWidth="193.0" resizable="false" text="Events attending" />
+                                    <TableColumn fx:id="customerIsActive" editable="false" maxWidth="177.0" prefWidth="90.0" resizable="false" text="isActive" />
                                  </columns>
                               </TableView>
                            </children>
