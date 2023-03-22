@@ -90,9 +90,8 @@
                                     <TableColumn fx:id="colMovieRating" editable="false" prefWidth="112.61314010620117" resizable="false" text="Full name" />
                                     <TableColumn fx:id="colMovieCategory" editable="false" prefWidth="98.50422668457031" resizable="false" text="Email" />
                                     <TableColumn fx:id="colLastViewed" editable="false" prefWidth="79.49578857421875" resizable="false" text="Role" />
-                                    <TableColumn fx:id="colDeleteMovie" editable="false" maxWidth="168.0" prefWidth="108.95986938476562" resizable="false" text="Events attending" />
-                                    <TableColumn fx:id="colDeleteMovie1" editable="false" maxWidth="167.0" prefWidth="72.97988891601562" resizable="false" text="isActive" />
-                                    <TableColumn fx:id="colDeleteMovie11" editable="false" maxWidth="167.0" prefWidth="112.02008056640625" resizable="false" text="Resend Ticket" />
+                                    <TableColumn fx:id="colDeleteMovie" editable="false" maxWidth="193.0" prefWidth="193.0" resizable="false" text="Events attending" />
+                                    <TableColumn fx:id="colDeleteMovie1" editable="false" maxWidth="177.0" prefWidth="90.0" resizable="false" text="isActive" />
                                  </columns>
                               </TableView>
                            </children>
@@ -147,15 +146,14 @@
                                     </Button>
                                  </children>
                               </GridPane>
-                              <TableView fx:id="moviesTable1" prefHeight="228.0" prefWidth="638.0">
+                              <TableView fx:id="sysTable" prefHeight="228.0" prefWidth="638.0">
                                  <columns>
-                                    <TableColumn fx:id="colMovieTitle1" editable="false" prefWidth="49.0" resizable="false" text="ID" />
-                                    <TableColumn fx:id="colMovieRating1" editable="false" prefWidth="112.61314010620117" resizable="false" text="Full name" />
-                                    <TableColumn fx:id="colMovieCategory1" editable="false" prefWidth="98.50422668457031" resizable="false" text="Email" />
-                                    <TableColumn fx:id="colLastViewed1" editable="false" prefWidth="79.49578857421875" resizable="false" text="Role" />
-                                    <TableColumn fx:id="colDeleteMovie1" editable="false" maxWidth="168.0" prefWidth="108.95986938476562" resizable="false" text="Events attending" />
-                                    <TableColumn fx:id="colDeleteMovie11" editable="false" maxWidth="167.0" prefWidth="72.97988891601562" resizable="false" text="isActive" />
-                                    <TableColumn fx:id="colDeleteMovie111" editable="false" maxWidth="167.0" prefWidth="112.02008056640625" resizable="false" text="Resend Ticket" />
+                                    <TableColumn fx:id="sysId" editable="false" prefWidth="49.0" resizable="false" text="Id" />
+                                    <TableColumn fx:id="sysName" editable="false" prefWidth="112.61314010620117" resizable="false" text="name" />
+                                    <TableColumn fx:id="sysEmail" editable="false" prefWidth="98.50422668457031" resizable="false" text="email" />
+                                    <TableColumn fx:id="sysHash" editable="false" prefWidth="79.49578857421875" resizable="false" text="pswHash" />
+                                    <TableColumn fx:id="sysRoles" editable="false" maxWidth="168.0" prefWidth="154.0" resizable="false" text="Roles" />
+                                    <TableColumn fx:id="sysActive" editable="false" maxWidth="167.0" prefWidth="130.0" resizable="false" text="isActive" />
                                  </columns>
                               </TableView>
                            </children>

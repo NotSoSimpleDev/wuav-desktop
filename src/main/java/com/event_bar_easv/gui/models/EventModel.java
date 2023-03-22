@@ -1,7 +1,4 @@
 package com.event_bar_easv.gui.models;
 
-
-public class UserModel {
-
-
+public class EventModel {
 }

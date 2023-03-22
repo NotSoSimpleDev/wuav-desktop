@@ -8,14 +8,10 @@ public class AppUser {
     private String name;
     private String email;
 
-
     private String passwordHash;
     private boolean isActivated;
 
-
-
     List<AppRole> roles;
-
 
     public int getId() {
         return id;
