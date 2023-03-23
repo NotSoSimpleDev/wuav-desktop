@@ -9,7 +9,13 @@ import java.util.List;
 public interface IEventModel {
     ObservableList<Event> getAllEvents();
 
+    ObservableList<SpecialTicketType>   getAllSpecialTickets();
+
     Event getEventById(int id);
 
     Event getEventByName(String eventName);
+
+    int createSpecialTicket(SpecialTicketType specialTicketType);
+
+    int addSpecialTicketToAllEvent(SpecialTicketType specialTicketType);
 }

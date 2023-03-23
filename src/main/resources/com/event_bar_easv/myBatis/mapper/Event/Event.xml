@@ -32,8 +32,14 @@
         </collection>
     </resultMap>
 
-    <!--    this bullshit does not map column names with kebab case psw_has -->
-    <!--    so it needs to be casted -->
+
+    <resultMap id="freeTicketResult" type="SpecialTicketType">
+        <id property="id" column="ticketId"/>
+        <result property="type" column="ticketType"/>
+        <result property="benefit"  column="benefit"/>
+    </resultMap>
+
+
     <select id="getAllEvents"
             resultMap="eventResult">
         SELECT e.id          as eventId,
@@ -62,6 +68,47 @@
                  LEFT OUTER JOIN event_specialTicket es ON e.id = es.event_id
                  LEFT OUTER JOIN special_ticket_type sp ON es.special_id = sp.id;
     </select>
+
+    <!--    this bullshit does not map column names with kebab case psw_has -->
+    <!--    so it needs to be casted -->
+    <select id="getAllSpecialTickets"
+            resultMap="freeTicketResult">
+      SELECT id as ticketId,
+             sp_type as ticketType,
+             sp_benefit as benefit
+        FROM special_ticket_type
+    </select>
+
+
+    <insert
+            id="createSpecialTicketType"
+            statementType="PREPARED"
+            keyProperty="id"
+            keyColumn="id"
+            parameterType="SpecialTicketType"
+            useGeneratedKeys="false"
+
+    >
+        --  insert categoryId and movieId to joining table
+        INSERT INTO special_ticket_type (id,sp_type, sp_benefit)
+        VALUES (#{id},#{type},#{benefit})
+
+    </insert>
+
+
+    <insert
+            id="addSpecialTicketToEvent"
+            statementType="PREPARED"
+            keyProperty=""
+            keyColumn=""
+            useGeneratedKeys="false"
+            parameterType="map"
+    >
+        --  insert categoryId and movieId to joining table
+        INSERT INTO event_specialTicket (event_id, special_id)
+        VALUES (#{eventId},#{ticketId})
+
+    </insert>
 
 </mapper>
 

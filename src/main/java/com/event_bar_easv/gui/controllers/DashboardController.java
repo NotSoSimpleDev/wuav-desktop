@@ -77,7 +77,6 @@ public class DashboardController extends RootController implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         CurrentUser currentUser = CurrentUser.getInstance();
         currentUser.getLoggedUser().getRoles().get(0);
         fillEvents();

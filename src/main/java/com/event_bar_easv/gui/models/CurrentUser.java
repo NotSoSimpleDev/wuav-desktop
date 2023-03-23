@@ -64,7 +64,6 @@ public class CurrentUser {
         else{
             this.currentUser = null;
         }
-
     }
 
     public void logout() {

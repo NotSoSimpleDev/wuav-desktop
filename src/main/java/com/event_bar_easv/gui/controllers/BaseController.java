@@ -175,7 +175,6 @@ public class BaseController extends RootController implements Initializable {
 
 
 
-
     //region VIEW INTERNAL HANDEL
 
     private RootController tryToLoadView() {

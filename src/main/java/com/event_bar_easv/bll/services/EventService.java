@@ -1,6 +1,7 @@
 package com.event_bar_easv.bll.services;
 
 import com.event_bar_easv.be.Event;
+import com.event_bar_easv.be.SpecialTicketType;
 import com.event_bar_easv.bll.services.interfaces.IEventService;
 import com.event_bar_easv.dal.interfaces.IEventRepository;
 import com.google.inject.Inject;
@@ -20,4 +21,26 @@ public class EventService implements IEventService {
     public List<Event> getAllEvents() {
         return eventRepository.getAllEvents();
     }
+
+
+    @Override
+    public List<SpecialTicketType> getAllSpecialTickets() {
+        return eventRepository.getAllSpecialTickets();
+    }
+
+    @Override
+    public int addSpecialTicketToAllEvent(SpecialTicketType specialTicketType, List<Integer> collectedIds) {
+        int finalResult = 0;
+        for (Integer id : collectedIds) {
+            finalResult =  eventRepository.addSpecialTicketToEvent(specialTicketType, id);
+        }
+        return finalResult;
+    }
+
+    @Override
+    public int createSpecialTicket(SpecialTicketType specialTicketType) {
+        return eventRepository.createSpecialTicket(specialTicketType);
+    }
+
+
 }

@@ -1,7 +1,7 @@
 package com.event_bar_easv.bll.services.interfaces;
 
 import com.event_bar_easv.be.Event;
-import com.event_bar_easv.be.user.AppUser;
+import com.event_bar_easv.be.SpecialTicketType;
 
 import java.util.List;
 
@@ -9,4 +9,9 @@ public interface IEventService {
 
     List<Event> getAllEvents();
 
+    List<SpecialTicketType> getAllSpecialTickets();
+
+    int addSpecialTicketToAllEvent(SpecialTicketType specialTicketType, List<Integer> collectedIds);
+
+    int createSpecialTicket(SpecialTicketType specialTicketType);
 }

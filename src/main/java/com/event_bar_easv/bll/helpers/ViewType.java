@@ -26,7 +26,7 @@ public enum ViewType {
     SPECIAL_TICKETS{
         @Override
         public String getFXMLView() {
-            return "views/specialTicketsView.fxml";
+            return "views/ticketView.fxml";
         }
     },
     DASHBOARD {

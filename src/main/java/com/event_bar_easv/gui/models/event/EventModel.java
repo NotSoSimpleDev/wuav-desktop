@@ -1,18 +1,20 @@
 package com.event_bar_easv.gui.models.event;
 
 import com.event_bar_easv.be.Event;
-import com.event_bar_easv.be.user.AppUser;
+import com.event_bar_easv.be.SpecialTicketType;
 import com.event_bar_easv.bll.services.interfaces.IEventService;
-import com.event_bar_easv.bll.services.interfaces.IUserService;
 import com.google.inject.Inject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.List;
 
 public class EventModel implements IEventModel {
     private final IEventService eventService;
 
     private ObservableList<Event> allEventsObservableList;
 
+    private ObservableList<SpecialTicketType> specialTicketTypeObservableList;
     @Inject
     public EventModel(IEventService eventService) {
         this.eventService = eventService;
@@ -25,6 +27,14 @@ public class EventModel implements IEventModel {
         allEventsObservableList = FXCollections.observableArrayList(eventService.getAllEvents());
         return allEventsObservableList;
     }
+
+    @Override
+    public ObservableList<SpecialTicketType>  getAllSpecialTickets() {
+        specialTicketTypeObservableList = FXCollections.observableArrayList(eventService.getAllSpecialTickets());
+        return specialTicketTypeObservableList;
+    }
+
+
 
     @Override
     public Event getEventById(int id) {
@@ -41,6 +51,22 @@ public class EventModel implements IEventModel {
                 .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public int createSpecialTicket(SpecialTicketType specialTicketType) {
+        return eventService.createSpecialTicket(specialTicketType);
+    }
+
+    @Override
+    public int addSpecialTicketToAllEvent(SpecialTicketType specialTicketType){
+        List<Integer> collectedIds = allEventsObservableList.stream()
+                .map(Event::getEventId)
+                .toList();
+
+        return eventService.addSpecialTicketToAllEvent(specialTicketType, collectedIds);
+    }
+
+
 
 
 }
