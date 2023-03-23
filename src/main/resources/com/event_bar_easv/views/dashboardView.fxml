@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -27,7 +28,7 @@
                   <GridPane prefHeight="84.0" prefWidth="651.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -105,10 +106,23 @@
                                     <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="Ticket type" />
+                                          <MenuButton fx:id="ticketType" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Ticket type">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                             <font>
+                                                <Font name="Arial Rounded MT Bold" size="12.0" />
+                                             </font>
+                                          </MenuButton>
+                                       </children></VBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                                        <children>
-                                           <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Special Ticket">
+                                          <Label text="Give free ticket" />
+                                           <MenuButton disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Special Ticket">
                                                <items>
                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -119,7 +133,6 @@
                                            </MenuButton>
                                        </children>
                                     </VBox>
-                                    <Label text="Give free ticket" />
                                  </children>
                               </GridPane>
                            </children>
@@ -131,21 +144,21 @@
                            <children>
                               <GridPane prefHeight="257.0" prefWidth="233.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
                                  <rowConstraints>
+                                    <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="33.06340026855469" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="33.06340026855469" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="31.14794921875" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="45.85205078125" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="287.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" prefWidth="233.0" text="Export ticket" />
-                                    <Button disable="true" mnemonicParsing="false" prefWidth="237.0" text="Print Ticket" GridPane.rowIndex="2" />
-                                    <Button disable="true" mnemonicParsing="false" prefWidth="237.0" text="Send via email" GridPane.rowIndex="4" />
-                                    <Button disable="true" mnemonicParsing="false" prefWidth="237.0" text="Give special Ticket" GridPane.rowIndex="3" />
-                                    <Button disable="true" mnemonicParsing="false" prefWidth="233.0" text="View Ticket" GridPane.rowIndex="1" />
+                                    <Button mnemonicParsing="false" onAction="#exportTicket" prefWidth="233.0" text="Export ticket" GridPane.rowIndex="1" />
+                                    <Button fx:id="saveTicket" disable="true" mnemonicParsing="false" prefWidth="237.0" text="Save ticket" GridPane.rowIndex="3" />
+                                    <Button fx:id="sendTicket" disable="true" mnemonicParsing="false" onAction="#sendTicketViaEmail" prefWidth="237.0" text="Send via email" GridPane.rowIndex="4" />
+                                    <Button fx:id="viewTicket" disable="true" mnemonicParsing="false" onAction="#openViewTicket" prefWidth="233.0" text="View Ticket" GridPane.rowIndex="2" />
+                                    <ProgressIndicator fx:id="progressLoad" prefWidth="107.0" progress="0.0" visible="false" />
                                  </children>
                               </GridPane>
                            </children>

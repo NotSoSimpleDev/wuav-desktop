@@ -20,6 +20,8 @@ public class Event {
 
     private String endTime;
 
+    private List<TicketType> ticketTypes;
+
 
     public int getEventId() {
         return eventId;
@@ -101,6 +103,15 @@ public class Event {
         this.endTime = endTime;
     }
 
+
+    public List<TicketType> getTicketTypes() {
+        return ticketTypes;
+    }
+
+    public void setTicketTypes(List<TicketType> ticketTypes) {
+        this.ticketTypes = ticketTypes;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -112,6 +123,9 @@ public class Event {
                 ", description='" + description + '\'' +
                 ", createdAt=" + createdAt +
                 ", participants=" + participants +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", ticketTypes=" + ticketTypes +
                 '}';
     }
 }

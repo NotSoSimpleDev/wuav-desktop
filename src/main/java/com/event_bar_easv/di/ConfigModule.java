@@ -4,6 +4,10 @@ import com.event_bar_easv.bll.services.EventService;
 import com.event_bar_easv.bll.services.UserService;
 import com.event_bar_easv.bll.services.interfaces.IEventService;
 import com.event_bar_easv.bll.services.interfaces.IUserService;
+import com.event_bar_easv.bll.utilities.engines.CodeEngine;
+import com.event_bar_easv.bll.utilities.engines.ICodesEngine;
+import com.event_bar_easv.bll.utilities.pdf.IPdfGenerator;
+import com.event_bar_easv.bll.utilities.pdf.PdfGenerator;
 import com.event_bar_easv.dal.interfaces.IEventRepository;
 import com.event_bar_easv.dal.interfaces.IUserRepository;
 import com.event_bar_easv.dal.reporitory.EventRepository;
@@ -60,6 +64,9 @@ public class ConfigModule extends AbstractModule {
 
         bind(IUserRepository.class).to(UserRepository.class);
         bind(IEventRepository.class).to(EventRepository.class);
+
+        bind(ICodesEngine.class).to(CodeEngine.class).in(Singleton.class);
+        bind(IPdfGenerator.class).to(PdfGenerator.class).in(Singleton.class);
         /* *************************************************************************
         *                                                                         *
         * MODEL                                                                   *

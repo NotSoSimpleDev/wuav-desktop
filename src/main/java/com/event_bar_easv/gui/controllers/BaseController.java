@@ -21,11 +21,6 @@ import java.net.URL;
 import java.util.*;
 
 
-/**
- * Base controller navigation with switchable content
- * Serves as a base for the app
- * injects the root controller
- */
 public class BaseController extends RootController implements Initializable {
 
     @FXML

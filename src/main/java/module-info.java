@@ -16,7 +16,6 @@ module com.event_bar_easv {
     requires com.google.zxing;
     requires com.google.zxing.javase;
 
-
     exports com.event_bar_easv.gui.controllers to  com.google.guice, javafx.fxml, com.google.common;
     exports com.event_bar_easv.bll.helpers;
     exports com.event_bar_easv.bll.services;
@@ -24,15 +23,14 @@ module com.event_bar_easv {
     exports com.event_bar_easv to javafx.graphics;
     exports com.event_bar_easv.dal.reporitory;
     exports com.event_bar_easv.dal.interfaces;
-    exports com.event_bar_easv.gui.models to javafx.graphics, org.mybatis, com.google.guice;
     exports com.event_bar_easv.config;
-    exports com.event_bar_easv.be to javafx.graphics, org.mybatis;
     exports com.event_bar_easv.di;
     exports com.event_bar_easv.gui.controllers.event;
     exports com.event_bar_easv.gui.controllers.controllerFactory;
     exports com.event_bar_easv.bll.services.interfaces to com.google.guice;
     exports com.event_bar_easv.gui.models.user to com.google.guice;
     exports com.event_bar_easv.bll.utilities.pdf to org.apache.pdfbox, org.apache.fontbox,com.google.zxing,javase,java.desktop, com.google.guice;
+    exports com.event_bar_easv.bll.utilities.engines;
 
     opens com.event_bar_easv.bll.utilities.pdf to org.apache.pdfbox, org.apache.fontbox,com.google.zxing,javase,java.desktop, com.google.guice;
     opens com.event_bar_easv.gui.controllers to javafx.fxml, com.google.guice, com.google.common;
@@ -43,15 +41,17 @@ module com.event_bar_easv {
     opens com.event_bar_easv.di to com.google.guice, javafx.fxml;
     opens com.event_bar_easv.dal.myBatis to org.mybatis, javafx.fxml, org.slf4j;
     opens com.event_bar_easv.dal.mappers to org.mybatis, com.google.guice;
-    opens com.event_bar_easv.be to org.mybatis, javafx.fxml, org.slf4j, com.google.guice;
     opens com.event_bar_easv.bll.services to org.mybatis, javafx.fxml, org.slf4j, com.google.guice;
     opens com.event_bar_easv.bll.services.interfaces to  javafx.fxml, com.google.guice, com.google.common, org.slf4j;
     opens com.event_bar_easv.gui.models.user to javafx.fxml, com.google.guice, com.google.common, org.slf4j;
-    opens com.event_bar_easv.gui.models to javafx.fxml, com.google.guice, com.google.common, org.slf4j;
     opens com.event_bar_easv.dal.reporitory to org.mybatis,javafx.fxml, com.google.guice, com.google.common, org.slf4j;
     exports com.event_bar_easv.be.user to javafx.graphics, org.mybatis;
     opens com.event_bar_easv.be.user to com.google.guice, javafx.fxml, org.mybatis, org.slf4j;
     exports com.event_bar_easv.gui.models.event to com.google.guice, javafx.graphics, org.mybatis;
     opens com.event_bar_easv.gui.models.event to com.google.common, com.google.guice, javafx.fxml, org.slf4j;
+    exports com.event_bar_easv.bll.utilities.email;
+    opens com.event_bar_easv.bll.utilities.engines to com.google.guice;
+    exports com.event_bar_easv.be to com.google.guice, javafx.graphics, org.mybatis;
+    opens com.event_bar_easv.be to com.google.common, com.google.guice, javafx.fxml, org.mybatis, org.slf4j;
 
 }

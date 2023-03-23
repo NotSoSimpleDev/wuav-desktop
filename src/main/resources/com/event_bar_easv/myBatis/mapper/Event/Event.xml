@@ -20,6 +20,11 @@
             <result property="name" column="userName"/>
             <result property="email" column="userEmail"/>
         </collection>
+        <collection property="ticketTypes" javaType="ArrayList" column="eventId" ofType="TicketType">
+            <id property="id" column="typeId"/>
+            <result property="type" column="typeName"/>
+            <result property="benefit" column="typeBenefit"/>
+        </collection>
     </resultMap>
 
     <!--    this bullshit does not map column names with kebab case psw_has -->
@@ -37,11 +42,15 @@
                e.end_time    as endTime,
                u.id          as userId,
                u.name        as userName,
-               u.email       as userEmail
+               u.email       as userEmail,
+               t.id          as typeId,
+               t.type_name   as typeName,
+               t.benefit     as typeBenefit
         FROM event AS e -->
                  LEFT OUTER JOIN user_event ue ON e.id = ue.event_id
                  LEFT OUTER JOIN app_user u ON ue.user_id = u.id
-
+                 LEFT OUTER JOIN event_type et ON e.id = et.event_id
+                 LEFT OUTER JOIN type t ON et.type_id = t.id;
     </select>
 
 </mapper>

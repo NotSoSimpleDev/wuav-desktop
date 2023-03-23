@@ -14,8 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventRepository implements IEventRepository {
-    Logger logger = LoggerFactory.getLogger(UserRepository.class);
+    static Logger logger = LoggerFactory.getLogger(UserRepository.class);
 
+//    public static void main(String[] args) {
+//        var test =  getTestEvent();
+//        System.out.println(test);
+//    }
     @Override
     public List<Event> getAllEvents() {
         List<Event> fetchedEvents = new ArrayList<>();
@@ -25,6 +29,19 @@ public class EventRepository implements IEventRepository {
         } catch (Exception ex) {
             logger.error("An error occurred mapping tables", ex);
         }
+        System.out.println(fetchedEvents);
         return fetchedEvents;
     }
+
+//    private static List<Event> getTestEvent(){
+//        List<Event> fetchedEvents = new ArrayList<>();
+//        try (SqlSession session = MyBatisConnectionFactory.getSqlSessionFactory().openSession()) {
+//            EventMapper mapper = session.getMapper(EventMapper.class);
+//            fetchedEvents = mapper.getAllEvents();
+//        } catch (Exception ex) {
+//            logger.error("An error occurred mapping tables", ex);
+//        }
+//        System.out.println(fetchedEvents);
+//        return fetchedEvents;
+//    }
 }

@@ -25,4 +25,14 @@ public class EventModel implements IEventModel {
         allEventsObservableList = FXCollections.observableArrayList(eventService.getAllEvents());
         return allEventsObservableList;
     }
+
+    @Override
+    public Event getEventById(int id) {
+        return allEventsObservableList.stream()
+                .filter(event -> event.getEventId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+
 }
