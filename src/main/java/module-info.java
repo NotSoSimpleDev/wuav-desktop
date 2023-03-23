@@ -15,6 +15,9 @@ module com.event_bar_easv {
     requires java.desktop;
     requires com.google.zxing;
     requires com.google.zxing.javase;
+    requires activation;
+    requires javax.mail;
+
 
     exports com.event_bar_easv.gui.controllers to  com.google.guice, javafx.fxml, com.google.common;
     exports com.event_bar_easv.bll.helpers;

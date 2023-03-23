@@ -4,9 +4,8 @@ import com.event_bar_easv.be.user.AppUser;
 
 public class Ticket {
 
-
     private int id;
-    private int number;
+    private String number;
     private boolean isValid;
     private TicketType ticketType;
 
@@ -22,11 +21,11 @@ public class Ticket {
         this.id = id;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

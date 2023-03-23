@@ -9,4 +9,7 @@ public interface IUserModel {
 
 
     AppUser createUser(AppUser movie);
+
+
+    AppUser getUserByEmail(String customerEmail);
 }

@@ -122,7 +122,7 @@
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                                        <children>
                                           <Label text="Give free ticket" />
-                                           <MenuButton disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Special Ticket">
+                                           <MenuButton fx:id="specialTickets" mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" text="Special Ticket">
                                                <items>
                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -156,7 +156,7 @@
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#exportTicket" prefWidth="233.0" text="Export ticket" GridPane.rowIndex="1" />
                                     <Button fx:id="saveTicket" disable="true" mnemonicParsing="false" prefWidth="237.0" text="Save ticket" GridPane.rowIndex="3" />
-                                    <Button fx:id="sendTicket" disable="true" mnemonicParsing="false" onAction="#sendTicketViaEmail" prefWidth="237.0" text="Send via email" GridPane.rowIndex="4" />
+                                    <Button fx:id="sendTicket" mnemonicParsing="false" onAction="#sendTicketViaEmail" prefWidth="237.0" text="Send via email" GridPane.rowIndex="4" />
                                     <Button fx:id="viewTicket" disable="true" mnemonicParsing="false" onAction="#openViewTicket" prefWidth="233.0" text="View Ticket" GridPane.rowIndex="2" />
                                     <ProgressIndicator fx:id="progressLoad" prefWidth="107.0" progress="0.0" visible="false" />
                                  </children>

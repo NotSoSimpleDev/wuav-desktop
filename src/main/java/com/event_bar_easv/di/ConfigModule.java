@@ -4,6 +4,9 @@ import com.event_bar_easv.bll.services.EventService;
 import com.event_bar_easv.bll.services.UserService;
 import com.event_bar_easv.bll.services.interfaces.IEventService;
 import com.event_bar_easv.bll.services.interfaces.IUserService;
+import com.event_bar_easv.bll.utilities.email.EmailConnectionFactory;
+import com.event_bar_easv.bll.utilities.email.EmailSender;
+import com.event_bar_easv.bll.utilities.email.IEmailSender;
 import com.event_bar_easv.bll.utilities.engines.CodeEngine;
 import com.event_bar_easv.bll.utilities.engines.ICodesEngine;
 import com.event_bar_easv.bll.utilities.pdf.IPdfGenerator;
@@ -67,6 +70,9 @@ public class ConfigModule extends AbstractModule {
 
         bind(ICodesEngine.class).to(CodeEngine.class).in(Singleton.class);
         bind(IPdfGenerator.class).to(PdfGenerator.class).in(Singleton.class);
+        bind(IEmailSender.class).to(EmailSender.class);
+
+        bind(EmailConnectionFactory.class).asEagerSingleton();
         /* *************************************************************************
         *                                                                         *
         * MODEL                                                                   *

@@ -30,4 +30,12 @@ public class UserModel implements IUserModel{
     public AppUser createUser(AppUser movie) {
         return null;
     }
+
+    @Override
+    public AppUser getUserByEmail(String customerName) {
+        return allUsersObservableList
+                .stream()
+                .filter(appUser -> appUser.getEmail().equals(customerName))
+                .findFirst().orElse(null);
+    }
 }

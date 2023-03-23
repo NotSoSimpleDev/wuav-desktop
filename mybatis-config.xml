@@ -23,6 +23,7 @@
         <typeAlias alias="AppRole" type="com.event_bar_easv.be.user.AppRole"/>
         <typeAlias alias="Event" type="com.event_bar_easv.be.Event"/>
         <typeAlias alias="TicketType" type="com.event_bar_easv.be.TicketType"/>
+        <typeAlias alias="SpecialTicketType" type="com.event_bar_easv.be.SpecialTicketType"/>
     </typeAliases>
 
     <!-- main environment -->

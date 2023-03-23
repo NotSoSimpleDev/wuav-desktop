@@ -22,6 +22,7 @@ public class Event {
 
     private List<TicketType> ticketTypes;
 
+    private List<SpecialTicketType> specialTicketTypes;
 
     public int getEventId() {
         return eventId;
@@ -108,8 +109,19 @@ public class Event {
         return ticketTypes;
     }
 
+
+
     public void setTicketTypes(List<TicketType> ticketTypes) {
         this.ticketTypes = ticketTypes;
+    }
+
+
+    public List<SpecialTicketType> getSpecialTicketTypes() {
+        return specialTicketTypes;
+    }
+
+    public void setSpecialTicketTypes(List<SpecialTicketType> specialTicketTypes) {
+        this.specialTicketTypes = specialTicketTypes;
     }
 
     @Override
@@ -126,6 +138,7 @@ public class Event {
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", ticketTypes=" + ticketTypes +
+                ", specialTicketTypes=" + specialTicketTypes +
                 '}';
     }
 }

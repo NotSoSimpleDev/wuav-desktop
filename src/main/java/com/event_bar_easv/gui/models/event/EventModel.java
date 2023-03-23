@@ -34,5 +34,13 @@ public class EventModel implements IEventModel {
                 .orElse(null);
     }
 
+    @Override
+    public Event getEventByName(String eventName) {
+        return allEventsObservableList.stream()
+                .filter(event -> event.getEventName().equals(eventName))
+                .findFirst()
+                .orElse(null);
+    }
+
 
 }
