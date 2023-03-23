@@ -10,6 +10,7 @@ import com.event_bar_easv.bll.utilities.AlertHelper;
 import com.event_bar_easv.bll.utilities.email.IEmailSender;
 import com.event_bar_easv.bll.utilities.pdf.IPdfGenerator;
 import com.event_bar_easv.gui.controllers.abstractController.RootController;
+import com.event_bar_easv.gui.models.CurrentUser;
 import com.event_bar_easv.gui.models.event.IEventModel;
 import com.event_bar_easv.gui.models.user.IUserModel;
 import com.google.inject.Inject;
@@ -17,8 +18,18 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.awt.*;
 import java.io.File;
@@ -66,16 +77,13 @@ public class DashboardController extends RootController implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tempAuth();
 
+        CurrentUser currentUser = CurrentUser.getInstance();
+        currentUser.getLoggedUser().getRoles().get(0);
         fillEvents();
         fillCustomers();
     }
 
-    private void tempAuth() {
-
-
-    }
 
     @Inject
     public DashboardController(IEventModel eventModel, IUserModel userModel, IPdfGenerator pdfGenerator, IEmailSender emailSender) {

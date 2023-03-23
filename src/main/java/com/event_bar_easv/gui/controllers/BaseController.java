@@ -1,6 +1,7 @@
 package com.event_bar_easv.gui.controllers;
 
 
+import com.event_bar_easv.gui.models.CurrentUser;
 import com.google.inject.Inject;
 import com.event_bar_easv.bll.helpers.ViewType;
 import com.event_bar_easv.gui.controllers.abstractController.RootController;
@@ -8,10 +9,14 @@ import com.event_bar_easv.gui.controllers.controllerFactory.IControllerFactory;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,6 +28,16 @@ import java.util.*;
 
 public class BaseController extends RootController implements Initializable {
 
+    @FXML
+    private Button specialTicketButton;
+
+    @FXML
+    private Button usersTicketButton;
+    @FXML
+    private Label userEmail;
+
+    @FXML
+    private Label userRole;
     @FXML
     private ScrollPane scroll_pane;
     @FXML
@@ -36,9 +51,89 @@ public class BaseController extends RootController implements Initializable {
 
     }
 
+    private void tempAuth() {
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.setTitle("Authorize yourself");
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+
+// Create the UI elements
+        Label usernameLabel = new Label("Username:");
+        TextField emailField = new TextField();
+        Label passwordLabel = new Label("Password:");
+        PasswordField passwordField = new PasswordField();
+        Button submitButton = new Button("Submit");
+        HBox buttonContainer = new HBox(submitButton);
+        buttonContainer.setAlignment(Pos.CENTER);
+
+// Layout the UI elements
+        VBox layout = new VBox(10, usernameLabel, emailField, passwordLabel, passwordField, buttonContainer);
+        layout.setAlignment(Pos.CENTER);
+        layout.setPadding(new Insets(10));
+
+// Set the scene
+        Scene scene = new Scene(layout);
+        stage.setScene(scene);
+
+// Handle the button click event
+        submitButton.setOnAction(e -> {
+            String email = emailField.getText();
+
+            CurrentUser currentUser = CurrentUser.getInstance();
+            currentUser.login(email);
+
+            if(currentUser.getLoggedUser().getEmail().equals(email)){
+                userEmail.setText(currentUser.getLoggedUser().getEmail());
+                userRole.setText(currentUser.getLoggedUser().getRoles().get(0).getName());
+
+                if(currentUser.getLoggedUser().getRoles().get(0).getName().equals("coordinator")){
+                    specialTicketButton.setDisable(true);
+                    usersTicketButton.setDisable(true);
+                }
+
+                stage.close();
+                handleDashBoardPageSwitch();
+            }
+            else {
+                System.out.println("Wrong credentials");
+            }
+
+
+        });
+
+        stage.showAndWait();
+
+//
+//        CurrentUser currentUser = CurrentUser.getInstance();
+//        // currentUser.login(emailField.getText(), pswField.getText());
+//        if (currentUser.isAuthorized()) {
+//
+//            if(currentUser.getLoggedUser().
+//                    getRoles().
+//                    stream()
+//                    .anyMatch(role -> role.getName().equals("Administrator"))){
+//
+//                System.out.println("Admin");
+//
+//            }
+//            else{
+//                System.out.println("Coordinator");
+//
+//            }
+//
+//
+//
+//        }
+
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        handleDashBoardPageSwitch();
+        tempAuth();
+
     }
 
     //region PAGE SWITCHING EVENTS

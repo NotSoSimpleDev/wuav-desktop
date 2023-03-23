@@ -35,12 +35,12 @@
                         <Circle fill="#d6ebff" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                            <children>
-                              <Label text="admin@yahoo.com" textFill="WHITE">
+                              <Label fx:id="userEmail" text="admin@yahoo.com" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label text="Administrator" textFill="WHITE">
+                              <Label fx:id="userRole" text="Administrator" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -63,10 +63,10 @@
                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                </rowConstraints>
                                <children>
-                                   <Button fx:id="fillAllMovies" onAction="#handleDashBoardPageSwitch" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="231.0" styleClass="allMoviesButton" text="Dashboard" />
+                                   <Button fx:id="fillAllMovies" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleDashBoardPageSwitch" prefHeight="40.0" prefWidth="231.0" styleClass="allMoviesButton" text="Dashboard" />
                                    <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleEventPageSwitch" prefHeight="40.0" prefWidth="231.0" styleClass="mediaPlayerButton" text="Event" GridPane.rowIndex="1" />
-                                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleSpecialTicketsPageSwitch" prefHeight="40.0" prefWidth="231.0" styleClass="mediaPlayerButton" text="Special Tickets" GridPane.rowIndex="2" />
-                                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleUsersPageSwitch" prefHeight="49.0" prefWidth="209.0" styleClass="mediaPlayerButton" text="Users" GridPane.rowIndex="3" />
+                                   <Button fx:id="specialTicketButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleSpecialTicketsPageSwitch" prefHeight="40.0" prefWidth="231.0" styleClass="mediaPlayerButton" text="Special Tickets" GridPane.rowIndex="2" />
+                                   <Button fx:id="usersTicketButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleUsersPageSwitch" prefHeight="49.0" prefWidth="209.0" styleClass="mediaPlayerButton" text="Users" GridPane.rowIndex="3" />
                                </children>
                                <effect>
                                    <DropShadow />
