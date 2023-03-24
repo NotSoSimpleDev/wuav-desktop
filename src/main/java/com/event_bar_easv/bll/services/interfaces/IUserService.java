@@ -8,4 +8,6 @@ public interface IUserService {
 
 
     List<AppUser> getAllUsers();
+
+    int createCustomer(AppUser appUser);
 }

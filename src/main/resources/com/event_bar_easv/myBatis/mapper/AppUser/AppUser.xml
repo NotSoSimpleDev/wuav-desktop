@@ -33,4 +33,33 @@
                  left outer join role r on ur.role_id = r.id
     </select>
 
+
+    <insert
+            id="createCustomer"
+            statementType="PREPARED"
+            keyProperty="id"
+            keyColumn="id"
+            parameterType="AppUser"
+            useGeneratedKeys="false"
+    >
+        INSERT INTO app_user (id,name,email,psw_hash,isActivated)
+        VALUES (#{id},#{name},#{email},#{passwordHash},#{isActivated});
+    </insert>
+
+    <insert
+            id="addUserToRole"
+            statementType="PREPARED"
+            keyProperty="id"
+            keyColumn="id"
+            useGeneratedKeys="false"
+            parameterType="map"
+    >
+        --  insert categoryId and movieId to joining table
+        INSERT INTO user_role (user_id,role_id)
+        VALUES (#{userId},#{roleId})
+
+    </insert>
+
+
+
 </mapper>

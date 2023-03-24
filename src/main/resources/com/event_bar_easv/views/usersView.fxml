@@ -70,18 +70,18 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField promptText="Full name">
+                                    <TextField fx:id="costName" promptText="Full name">
                                        <GridPane.margin>
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField promptText="Email" GridPane.rowIndex="1">
+                                    <TextField fx:id="custEmail" promptText="Email" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <MFXCheckbox prefHeight="22.0" prefWidth="137.0" text="Is Activate" GridPane.columnIndex="1" />
-                                    <Button mnemonicParsing="false" prefWidth="164.0" text="CREATE CUSTOMER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <MFXCheckbox fx:id="custActive" prefHeight="22.0" prefWidth="137.0" text="Is Activate" GridPane.columnIndex="1" />
+                                    <Button mnemonicParsing="false" onAction="#createCustomer" prefWidth="164.0" text="CREATE CUSTOMER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
                               <TableView fx:id="customerTable" prefHeight="228.0" prefWidth="638.0">

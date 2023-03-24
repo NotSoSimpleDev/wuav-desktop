@@ -2,6 +2,7 @@ package com.event_bar_easv.dal.mappers;
 import com.event_bar_easv.be.Event;
 import com.event_bar_easv.be.SpecialTicketType;
 import com.event_bar_easv.be.TicketType;
+import com.event_bar_easv.be.user.AppUser;
 import org.apache.ibatis.annotations.Param;
 
 
@@ -22,4 +23,5 @@ public interface EventMapper {
     int addTypeToTicket(@Param("eventId") int eventId, @Param("typeId") int typeId);
 
     int createTypeForTicket(TicketType ticketType);
+
 }

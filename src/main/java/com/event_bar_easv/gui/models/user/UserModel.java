@@ -38,4 +38,9 @@ public class UserModel implements IUserModel{
                 .filter(appUser -> appUser.getEmail().equals(customerName))
                 .findFirst().orElse(null);
     }
+
+    @Override
+    public int createCustomerService(AppUser appUser) {
+        return userService.createCustomer(appUser);
+    }
 }

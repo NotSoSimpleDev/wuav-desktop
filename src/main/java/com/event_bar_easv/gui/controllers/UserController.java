@@ -5,23 +5,30 @@ import com.event_bar_easv.be.user.AppUser;
 import com.event_bar_easv.gui.controllers.abstractController.RootController;
 import com.event_bar_easv.gui.models.user.IUserModel;
 import com.google.inject.Inject;
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserController extends RootController implements Initializable {
 
+    @FXML
+    private TextField custEmail;
+    @FXML
+    private TextField costName;
+    @FXML
+    private MFXCheckbox custActive;
     // SYS USER TABLE
     @FXML
     private TableColumn<AppUser,Integer> sysId;
@@ -128,5 +135,40 @@ public class UserController extends RootController implements Initializable {
             sysTable.setItems(FXCollections.observableList(sysUsers));
         }
 
+    @FXML
+    private void createCustomer(ActionEvent actionEvent) {
 
+
+        AppUser appUser = new AppUser();
+        Random random = new Random();
+        int id = random.nextInt(Integer.MAX_VALUE);
+
+        Random random2 = new Random();
+        int roleId = random2.nextInt(Integer.MAX_VALUE);
+
+        appUser.setId(id);
+        appUser.setName(costName.getText());
+        appUser.setEmail(custEmail.getText());
+        appUser.setActivated(custActive.isSelected());
+
+        AppRole appRole = new AppRole(roleId,"user");
+        appUser.setRoles(List.of(appRole));
+
+        var result = userModel.createCustomerService(appUser);
+        if(result > 0){
+            System.out.println("Customer created");
+            refreshTable();
+        }
+
+    }
+
+
+    private void refreshTable() {
+        if (customerTable != null) {
+            if (customerTable.getItems() != null) {
+                customerTable.getItems().clear();
+                customerTable.getItems().setAll( userModel.getAllUsers());
+            }
+        }
+    }
 }
