@@ -24,6 +24,9 @@ public class Event {
 
     private List<SpecialTicketType> specialTicketTypes;
 
+
+
+
     public int getEventId() {
         return eventId;
     }

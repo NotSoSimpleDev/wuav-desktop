@@ -81,6 +81,35 @@
 
 
     <insert
+            id="createEvent"
+            statementType="PREPARED"
+            keyProperty="id"
+            keyColumn="id"
+            parameterType="Event"
+            useGeneratedKeys="false"
+
+    >
+        INSERT INTO event (id,event_name,start_date,end_date,location,description,start_time,end_time)
+        VALUES (#{id},#{title},#{startDate},#{endDate},#{loc},#{notes},#{startTime},#{endTime});
+    </insert>
+
+    <insert
+            id="createTypeForTicket"
+            statementType="PREPARED"
+            keyProperty="id"
+            keyColumn="id"
+            parameterType="TicketType"
+            useGeneratedKeys="false"
+
+    >
+        --  insert categoryId and movieId to joining table
+        INSERT INTO type (id,type_name, benefit)
+        VALUES (#{id},#{type},#{benefit})
+
+    </insert>
+
+
+    <insert
             id="createSpecialTicketType"
             statementType="PREPARED"
             keyProperty="id"
@@ -92,6 +121,22 @@
         --  insert categoryId and movieId to joining table
         INSERT INTO special_ticket_type (id,sp_type, sp_benefit)
         VALUES (#{id},#{type},#{benefit})
+
+    </insert>
+
+
+
+    <insert
+            id="addTypeToTicket"
+            statementType="PREPARED"
+            keyProperty="id"
+            keyColumn="id"
+            useGeneratedKeys="false"
+            parameterType="map"
+    >
+        --  insert categoryId and movieId to joining table
+        INSERT INTO event_type (event_id,type_id)
+        VALUES (#{eventId},#{typeId})
 
     </insert>
 

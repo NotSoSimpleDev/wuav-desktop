@@ -71,7 +71,10 @@ public class EventModel implements IEventModel {
         return eventService.addSpecialTicketToEvent(specialTicketType, eventId);
     }
 
-
+    @Override
+    public int createEvent(Event event) {
+        return eventService.createEvent(event);
+    }
 
 
 }

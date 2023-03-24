@@ -2,21 +2,23 @@ package com.event_bar_easv.gui.controllers;
 
 
 import com.event_bar_easv.be.Event;
+import com.event_bar_easv.be.TicketType;
 import com.event_bar_easv.gui.models.event.IEventModel;
 import com.google.inject.Inject;
 import com.event_bar_easv.gui.controllers.abstractController.RootController;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
@@ -25,6 +27,24 @@ import java.util.ResourceBundle;
 public class EventController extends RootController implements Initializable {
 
 
+    @FXML
+    private TextField eventName;
+    @FXML
+    private MFXDatePicker startDate;
+    @FXML
+    private MFXDatePicker endDate;
+    @FXML
+    private TextField eventLocation;
+    @FXML
+    private TextField startTime;
+    @FXML
+    private TextField endTime;
+    @FXML
+    private TextField ticketType; // field of custom Ticket name type liek VIP, VVIP, etc
+    @FXML
+    private TextArea notes;
+    @FXML
+    private MenuButton listOfTicketTypes;
     @FXML
     private MenuButton eventTicketType;
     @FXML
@@ -41,6 +61,8 @@ public class EventController extends RootController implements Initializable {
     private TableColumn<Event,String> colEventDescription;
     @FXML
     private TableColumn<Event,String> colEventFreeTicket;
+
+    private List<String> storedTicketTypes = new ArrayList<>();
 
 
     private final IEventModel eventModel;
@@ -86,21 +108,101 @@ public class EventController extends RootController implements Initializable {
     }
 
 
-    private void fillTicketTypesWithData() {
-        // needs to fill here with all ticket types set by admin
-        List<Event> categoryList = eventModel.getAllEvents();
-        if (eventTicketType.getItems() != null) {
-            eventTicketType.getItems().clear();
-            categoryList.stream()
-                    .map(event -> {
-                        CheckMenuItem menuItem = new CheckMenuItem();
-                        menuItem.setText(event.getEventName());
+    @FXML
+    private void createEvent(ActionEvent actionEvent) {
+        // collected values
+        var title = eventName.getText();
+        var loc = eventLocation.getText();
+        var startDate2 =  startDate.getValue();
+        var endDate2 = endDate.getValue();
+        var startTime2 = startTime.getText();
+        var endTime2 = endTime.getText();
+        var notes2 = notes.getText();
 
-                        return menuItem;
-                    })
-                    .forEach(menuItem -> eventTicketType.getItems().add(menuItem));
+        List<String> storedTicketTypes2 = storedTicketTypes; // stored types of the event
+
+
+        Random random = new Random();
+        int id = random.nextInt(Integer.MAX_VALUE);
+
+
+        List<TicketType> constructedTypes = new ArrayList<>();
+        // Construct TicketTypes
+        for (String ticketType : storedTicketTypes2
+             ) {
+            Random random1 = new Random();
+            int ticketTypeId = random1.nextInt(Integer.MAX_VALUE);
+            TicketType ticketType1 = new TicketType();
+            ticketType1.setId(ticketTypeId);
+            ticketType1.setType(ticketType);
+            constructedTypes.add(ticketType1);
+        }
+
+        Event event = new Event();
+        event.setEventId(id);
+        event.setEventName(title);
+        event.setStartDate(Date.valueOf(startDate2));
+        event.setEndDate(Date.valueOf(endDate2));
+        event.setLocation(loc);
+        event.setDescription(notes2);
+
+        event.setStartTime(startTime2);
+        event.setEndTime(endTime2);
+
+        event.setTicketTypes(constructedTypes);
+
+
+        var result = eventModel.createEvent(event);
+        if(result > 0 ){
+            System.out.println("Event created");
+            refreshTable();
+        } else {
+            System.out.println("Event not created");
+        }
+        // create event here
+    }
+
+    @FXML
+    private void addTicketTolist(ActionEvent actionEvent) {
+        if(!ticketType.getText().equals("")){
+            System.out.println("Ticket type added to list");
+            storedTicketTypes.add(ticketType.getText());
+
+            throwTypeIntoMenu();
+        } else {
+            System.out.println("Ticket type is empty");
+        }
+
+    }
+
+
+    private void refreshTable() {
+        if (eventTable != null) {
+            if (eventTable.getItems() != null) {
+                eventTable.getItems().clear();
+                eventTable.getItems().setAll( eventModel.getAllEvents());
+            }
         }
     }
 
+    private void throwTypeIntoMenu() {
+        if (listOfTicketTypes.getItems() != null) {
+            listOfTicketTypes.getItems().clear();
+            storedTicketTypes.stream()
+                    .map(event -> {
+                        CheckMenuItem menuItem = new CheckMenuItem();
+                        menuItem.setText(event);
+
+                        // Set an EventHandler for each menuItem
+                        menuItem.setOnAction(eventHandler -> {
+                            listOfTicketTypes.setText(menuItem.getText());
+
+                        });
+
+                        return menuItem;
+                    })
+                    .forEach(menuItem -> listOfTicketTypes.getItems().add(menuItem));
+        }
+    }
 
 }

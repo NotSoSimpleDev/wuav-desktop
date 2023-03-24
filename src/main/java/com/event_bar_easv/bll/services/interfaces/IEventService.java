@@ -16,4 +16,6 @@ public interface IEventService {
     int addSpecialTicketToEvent(SpecialTicketType specialTicketType, int eventId);
 
     int createSpecialTicket(SpecialTicketType specialTicketType);
+
+    int createEvent(Event event);
 }

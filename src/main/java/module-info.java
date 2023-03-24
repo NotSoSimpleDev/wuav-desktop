@@ -17,6 +17,7 @@ module com.event_bar_easv {
     requires com.google.zxing.javase;
     requires activation;
     requires javax.mail;
+    requires MaterialFX;
 
 
     exports com.event_bar_easv.gui.controllers to  com.google.guice, javafx.fxml, com.google.common;

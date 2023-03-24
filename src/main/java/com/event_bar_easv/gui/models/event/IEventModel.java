@@ -20,4 +20,6 @@ public interface IEventModel {
     int addSpecialTicketToAllEvent(SpecialTicketType specialTicketType);
 
     int addSpecialTicketToEvent(SpecialTicketType specialTicketType, int eventId);
+
+    int createEvent(Event event);
 }

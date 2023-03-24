@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +17,6 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class TicketController extends RootController implements Initializable {
-
 
     @FXML
     private TextField ticketNameField;
@@ -48,13 +46,8 @@ public class TicketController extends RootController implements Initializable {
         fillTableWithEventsData();
     }
 
-    // TODO :
-    // ALLOW TO ADD SPECIAL TICKET TO SPECIFIC EVENT
-
 
     // GET TICKET TYPES CONNECTED WITH THE EVENTS
-
-
     private void fillTableWithEventsData() {
 
         colEventTitle.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getType()));
@@ -96,8 +89,6 @@ public class TicketController extends RootController implements Initializable {
         }
     }
 
-
-
     @FXML
     private void createSpecialTicket(ActionEvent actionEvent) {
 
@@ -124,10 +115,6 @@ public class TicketController extends RootController implements Initializable {
         } else {
             System.out.println("Fill fields");
         }
-
-
-
-
 
     }
 
