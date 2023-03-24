@@ -59,25 +59,22 @@ public class BaseController extends RootController implements Initializable {
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
 
-// Create the UI elements
-        Label usernameLabel = new Label("Username:");
+        Label usernameLabel = new Label("Email:");
         TextField emailField = new TextField();
+        emailField.setText("admin@yahoo.com");
         Label passwordLabel = new Label("Password:");
         PasswordField passwordField = new PasswordField();
         Button submitButton = new Button("Submit");
         HBox buttonContainer = new HBox(submitButton);
         buttonContainer.setAlignment(Pos.CENTER);
 
-// Layout the UI elements
         VBox layout = new VBox(10, usernameLabel, emailField, passwordLabel, passwordField, buttonContainer);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(10));
 
-// Set the scene
         Scene scene = new Scene(layout);
         stage.setScene(scene);
 
-// Handle the button click event
         submitButton.setOnAction(e -> {
             String email = emailField.getText();
 
@@ -105,27 +102,6 @@ public class BaseController extends RootController implements Initializable {
 
         stage.showAndWait();
 
-//
-//        CurrentUser currentUser = CurrentUser.getInstance();
-//        // currentUser.login(emailField.getText(), pswField.getText());
-//        if (currentUser.isAuthorized()) {
-//
-//            if(currentUser.getLoggedUser().
-//                    getRoles().
-//                    stream()
-//                    .anyMatch(role -> role.getName().equals("Administrator"))){
-//
-//                System.out.println("Admin");
-//
-//            }
-//            else{
-//                System.out.println("Coordinator");
-//
-//            }
-//
-//
-//
-//        }
 
     }
 

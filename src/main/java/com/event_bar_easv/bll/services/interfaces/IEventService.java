@@ -13,5 +13,7 @@ public interface IEventService {
 
     int addSpecialTicketToAllEvent(SpecialTicketType specialTicketType, List<Integer> collectedIds);
 
+    int addSpecialTicketToEvent(SpecialTicketType specialTicketType, int eventId);
+
     int createSpecialTicket(SpecialTicketType specialTicketType);
 }

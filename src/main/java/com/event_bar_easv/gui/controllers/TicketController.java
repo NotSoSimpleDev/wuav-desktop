@@ -6,20 +6,16 @@ import com.event_bar_easv.gui.controllers.abstractController.RootController;
 import com.event_bar_easv.gui.models.event.EventModel;
 import com.google.inject.Inject;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
-import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class TicketController extends RootController implements Initializable {
 
@@ -52,12 +48,36 @@ public class TicketController extends RootController implements Initializable {
         fillTableWithEventsData();
     }
 
+    // TODO :
+    // ALLOW TO ADD SPECIAL TICKET TO SPECIFIC EVENT
+
+
+    // GET TICKET TYPES CONNECTED WITH THE EVENTS
+
 
     private void fillTableWithEventsData() {
 
         colEventTitle.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getType()));
         colEventBenefit.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getBenefit()));
 
+
+        List<Event> allEvents = eventModel.getAllEvents();
+        if (eventTicketType.getItems() != null) {
+            eventTicketType.getItems().clear();
+            allEvents.stream()
+                    .map(event -> {
+                        CheckMenuItem menuItem = new CheckMenuItem();
+                        menuItem.setText(event.getEventName());
+
+                        // Set an EventHandler for each menuItem
+                        menuItem.setOnAction(eventHandler -> {
+                            eventTicketType.setText(menuItem.getText());
+                        });
+
+                        return menuItem;
+                    })
+                    .forEach(menuItem -> eventTicketType.getItems().add(menuItem));
+        }
 
         trySetEventIntoTable();
     }
@@ -67,17 +87,80 @@ public class TicketController extends RootController implements Initializable {
         ticketTable.setItems(test);
     }
 
+    private void refreshTable() {
+        if (ticketTable != null) {
+            if (ticketTable.getItems() != null) {
+                ticketTable.getItems().clear();
+                ticketTable.getItems().setAll( eventModel.getAllSpecialTickets());
+            }
+        }
+    }
+
 
 
     @FXML
     private void createSpecialTicket(ActionEvent actionEvent) {
 
-        if(!ticketNameField.getText().isEmpty() || !benfitField.getText().isEmpty() && eventTicketType != null){
-            ticketNameField.getText();
-            benfitField.getText();
+        Optional<CheckMenuItem> selectedType = eventTicketType.getItems().stream()
+                .filter(item -> item instanceof CheckMenuItem)
+                .map(CheckMenuItem.class::cast)
+                .filter(CheckMenuItem::isSelected)
+                .findFirst();
 
+        if (ticketNameField.getText().isEmpty() || benfitField.getText().isEmpty()) {
+            System.out.println("Required");
+        } else if (selectedType.isPresent()) {
+            String ticketName = ticketNameField.getText();
+            String benefit = benfitField.getText();
+            String selectedText = selectedType.get().getText();
+            System.out.println("Ticket Name: " + ticketName + ", Benefit: " + benefit + ", Selected Type: " + selectedText);
+            addTicketForSpecificEvent(selectedType.get().getText());
+        } else if (selectedType.isEmpty() && !ticketNameField.getText().isEmpty() && !benfitField.getText().isEmpty()) {
+            String ticketName = ticketNameField.getText();
+            String benefit = benfitField.getText();
+            System.out.println("Ticket Name: " + ticketName + ", Benefit: " + benefit);
+
+            addDefaultTicketsForAllEvents();
+        } else {
+            System.out.println("Fill fields");
+        }
+
+
+
+
+
+    }
+
+    private void addTicketForSpecificEvent(String eventName) {
+
+        SpecialTicketType specialTicketType = new SpecialTicketType();
+        Random random = new Random();
+        int id = random.nextInt(Integer.MAX_VALUE);
+        specialTicketType.setId(id);
+        specialTicketType.setType(ticketNameField.getText());
+        specialTicketType.setBenefit(benfitField.getText());
+
+        Event event = eventModel.getEventByName(eventName);
+
+        int createdTicket = eventModel.createSpecialTicket(specialTicketType);
+
+        if(createdTicket > 0){
+            System.out.println("Assigning for specific event");
+            int result = eventModel.addSpecialTicketToEvent(specialTicketType,event.getEventId());
+            if(result > 0){
+                System.out.println("Ticket created");
+                refreshTable();
+            }else {
+                System.out.println("Failed to create ticket");
+            }
+        }
+    }
+
+    private void addDefaultTicketsForAllEvents() {
             SpecialTicketType specialTicketType = new SpecialTicketType();
-            specialTicketType.setId(564789);
+            Random random = new Random();
+            int id = random.nextInt(Integer.MAX_VALUE);
+            specialTicketType.setId(id);
             specialTicketType.setType(ticketNameField.getText());
             specialTicketType.setBenefit(benfitField.getText());
 
@@ -88,13 +171,10 @@ public class TicketController extends RootController implements Initializable {
                 int result = eventModel.addSpecialTicketToAllEvent(specialTicketType);
                 if(result > 0){
                     System.out.println("Ticket created");
+                    refreshTable();
                 }else {
                     System.out.println("Failed to create ticket");
                 }
             }
-
-
-        }
-
     }
 }

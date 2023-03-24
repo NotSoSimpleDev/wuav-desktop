@@ -59,11 +59,16 @@ public class EventModel implements IEventModel {
 
     @Override
     public int addSpecialTicketToAllEvent(SpecialTicketType specialTicketType){
-        List<Integer> collectedIds = allEventsObservableList.stream()
-                .map(Event::getEventId)
-                .toList();
+            List<Integer> collectedIds = allEventsObservableList.stream()
+                    .map(Event::getEventId)
+                    .toList();
 
-        return eventService.addSpecialTicketToAllEvent(specialTicketType, collectedIds);
+            return eventService.addSpecialTicketToAllEvent(specialTicketType, collectedIds);
+    }
+
+    @Override
+    public int addSpecialTicketToEvent(SpecialTicketType specialTicketType, int eventId) {
+        return eventService.addSpecialTicketToEvent(specialTicketType, eventId);
     }
 
 

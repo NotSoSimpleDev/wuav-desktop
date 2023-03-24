@@ -38,6 +38,11 @@ public class EventService implements IEventService {
     }
 
     @Override
+    public int addSpecialTicketToEvent(SpecialTicketType specialTicketType, int eventId) {
+        return eventRepository.addSpecialTicketToEvent(specialTicketType, eventId);
+    }
+
+    @Override
     public int createSpecialTicket(SpecialTicketType specialTicketType) {
         return eventRepository.createSpecialTicket(specialTicketType);
     }
