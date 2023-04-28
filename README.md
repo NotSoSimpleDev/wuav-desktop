@@ -7,9 +7,9 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-# EASV-TICKET-BAR-MANAGER
+# WUAV-DESKTOP-CLIENT
 
-:school_satchel: Pre-Exam | 2st Semester | SDE & SCO
+:school_satchel: Final-Exam | 2st Semester | SDE & SCO
 
 ---
 
@@ -20,7 +20,7 @@
    
   </a>
   <p align="center">
-    EASV Ticker Bar Manager Desktop Application
+    WUAV Desktop Management Application
     <br />
     <a href="https://github.com/TomassSimko/Private-Movie-Collection"><strong>Explore the docs »</strong></a>
     <br />
